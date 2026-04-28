@@ -12,15 +12,15 @@ public class ProductService {
     // En este caso, se instancia el repositorio directamente dentro del servicio. Esto no es lo ideal, pero se hace así para ilustrar el concepto de inyección de dependencias.
     private ProductRepository repository = new ProductRepository();
 
-    // Obtenemos toda la lista de productos y con stream() convertimos la lista en un flujo de datos, lo que nos permite aplicar operaciones funcionales como map() y collect().
-    // map() iterará sobre cada producto de la lista. priceImp es el nuevo precio con el impuesto del 16% aplicado.
-    // Luego, se actualiza el precio del producto con el nuevo valor. Se utiliza long.value() para convertir a tipo Long
-    // map devuelve un stream por lo que se necesita collect() para convertirlo nuevamente a una lista.
+    // Obtenemos toda la lista de Productos, aplicamos stream para mapear cada producto y agregarle el impuesto del 16% al precio, 
+    // Clonamos el producto original para no modificarlo, le agregamos el nuevo precio (convertido a Long) con el impuesto
+    // Como map devuelve un stream, lo convertimos a una lista con collect(Collectors.toList()).
     public List<Product> findAll() {
         return repository.findAll().stream().map(p -> {
-            Double priceImp = p.getPrice() * 1.16; 
-            p.setPrice(priceImp.longValue());
-            return p;
+            Double priceTax = p.getPrice() * 1.16; 
+            Product newProd = (Product) p.clone();
+            newProd.setPrice(priceTax.longValue());
+            return newProd; 
         }).collect(Collectors.toList());
     }
 
