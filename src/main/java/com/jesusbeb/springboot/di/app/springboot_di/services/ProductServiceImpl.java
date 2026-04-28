@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.jesusbeb.springboot.di.app.springboot_di.models.Product;
@@ -14,7 +15,9 @@ import com.jesusbeb.springboot.di.app.springboot_di.repositories.ProductReposito
 public class ProductServiceImpl implements ProductService {
 
     // Se inyecta el repositorio mediante atributo con @Autowired. Tambien se podría inyectar mediante constructor o setter. Con setter tambien se usa @Autowired, pero con constructor no es necesario.
+    // Qualifier inyecta esta implementacion del repositorio, sin importar que exista otra implementación marcada como @Primary.
     @Autowired
+    @Qualifier("productRepositoryImpl")
     private ProductRepository repository;
 
     // Obtenemos toda la lista de Productos, aplicamos stream para mapear cada producto y agregarle el impuesto del 16% al precio, 
