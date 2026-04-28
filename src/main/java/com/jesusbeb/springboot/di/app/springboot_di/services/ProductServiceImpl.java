@@ -13,6 +13,7 @@ import com.jesusbeb.springboot.di.app.springboot_di.repositories.ProductReposito
 @Service
 public class ProductServiceImpl implements ProductService {
 
+    // Se inyecta el repositorio mediante atributo con @Autowired. Tambien se podría inyectar mediante constructor o setter. Con setter tambien se usa @Autowired, pero con constructor no es necesario.
     @Autowired
     private ProductRepository repository;
 
