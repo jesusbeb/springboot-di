@@ -4,13 +4,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.jesusbeb.springboot.di.app.springboot_di.models.Product;
 import com.jesusbeb.springboot.di.app.springboot_di.repositories.ProductRepository;
 
 // Service se encarga de la lógica de negocio relacionada con los productos. Manipula los datos obtenidos del repositorio y los devuelve al controlador.
-@Component
+@Service
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
