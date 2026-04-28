@@ -3,14 +3,18 @@ package com.jesusbeb.springboot.di.app.springboot_di.services;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.jesusbeb.springboot.di.app.springboot_di.models.Product;
 import com.jesusbeb.springboot.di.app.springboot_di.repositories.ProductRepositoryImpl;
 
 // Service se encarga de la lógica de negocio relacionada con los productos. Manipula los datos obtenidos del repositorio y los devuelve al controlador.
+@Component
 public class ProductServiceImpl implements ProductService {
 
-    // En este caso, se instancia el repositorio directamente dentro del servicio. Esto no es lo ideal, pero se hace así para ilustrar el concepto de inyección de dependencias.
-    private ProductRepositoryImpl repository = new ProductRepositoryImpl();
+    @Autowired
+    private ProductRepositoryImpl repository;
 
     // Obtenemos toda la lista de Productos, aplicamos stream para mapear cada producto y agregarle el impuesto del 16% al precio, 
     // Clonamos el producto original para no modificarlo, le agregamos el nuevo precio (convertido a Long) con el impuesto
