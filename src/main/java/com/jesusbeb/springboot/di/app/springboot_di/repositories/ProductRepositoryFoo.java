@@ -12,7 +12,7 @@ import com.jesusbeb.springboot.di.app.springboot_di.models.Product;
 // esta implementación devuelve un producto fijo o una lista con un solo producto. Esto se hace para ilustrar cómo se pueden tener múltiples 
 // implementaciones de un mismo repositorio y cómo Spring puede inyectar la implementación correcta según la configuración.
 // La anotación @Primary indica que esta implementación debe ser la preferida cuando se inyecte el repositorio. Si no se usara @Primary, Spring lanzaría una excepción al no saber qué implementación inyectar.
-@Primary
+//@Primary
 @Repository
 public class ProductRepositoryFoo implements ProductRepository {
 

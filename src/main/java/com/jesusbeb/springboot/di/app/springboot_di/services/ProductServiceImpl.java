@@ -16,9 +16,9 @@ import com.jesusbeb.springboot.di.app.springboot_di.repositories.ProductReposito
 public class ProductServiceImpl implements ProductService {
 
     // Se inyecta el repositorio mediante atributo con @Autowired. Tambien se podría inyectar mediante constructor o setter. Con setter tambien se usa @Autowired, pero con constructor no es necesario.
-    // Qualifier inyecta esta implementacion del repositorio, sin importar que exista otra implementación marcada como @Primary.
+    // Qualifier inyecta el repositorio indicado (con su nombre escrito todo en minusculas), sin importar que exista otra implementación marcada como @Primary.
     @Autowired
-    @Qualifier("productRepositoryImpl")
+    //@Qualifier("productRepositoryImpl")
     private ProductRepository repository;
 
     // Se inyecta el entorno para obtener las propiedades definidas en el archivo de configuración. Esto permite acceder a la propiedad "config.price.tax".
